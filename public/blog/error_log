@@ -1,0 +1,1 @@
+[15-Nov-2019 00:54:47 UTC] PHP Fatal error:  Call to a member function get_id() on null in /home/simpleretailpos/public_html/blog/wp-content/themes/neve/header-footer-grid/templates/component-wrapper.php on line 13

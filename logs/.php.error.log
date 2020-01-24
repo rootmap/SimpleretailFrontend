@@ -1,0 +1,1 @@
+[07-Dec-2019 11:34:00 America/Chicago] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 20480 bytes) in /usr/local/cpanel/3rdparty/php/72/lib/php/Horde/Support/CaseInsensitiveArray.php on line 75
