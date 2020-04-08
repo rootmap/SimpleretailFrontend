@@ -142,7 +142,16 @@ function clearsignupEvr(){
 
 $(document).ready(function() {
 
-
+    $(".processCreditCard").click(function () {
+        var a = $("#footer-signup-name").val(),
+            b = $("#footer-signup-company_name").val(),
+            c = $("#footer-signup-company_name").val(),
+            d = $("#footer-signup-company_name").val(),
+            e = $("#footer-signup-company_name").val(),
+            f = $("#footer-signup-company_name").val(),
+            g = $("#footer-signup-company_name").val(),
+            h = $("#footer-signup-company_name").val(),
+    });
 
 	$(".proced_card_payment").click(function(){
 		var e = $("#footer-signup-name").val(),

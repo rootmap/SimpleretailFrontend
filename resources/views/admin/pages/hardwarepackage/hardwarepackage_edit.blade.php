@@ -1,17 +1,17 @@
 
 @extends("admin.layout.master")
-@section("title","Edit Package")
+@section("title","Edit Hardware Package")
 @section("content")
 <section class="content-header">
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Package</h1>
+        <h1>Hardware Package</h1>
       </div>
       <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{url('package/list')}}">Datatable </a></li>
-              <li class="breadcrumb-item"><a href="{{url('package/create')}}">Create New </a></li>
+              <li class="breadcrumb-item"><a href="{{url('hardwarepackage/list')}}">Datatable </a></li>
+              <li class="breadcrumb-item"><a href="{{url('hardwarepackage/create')}}">Create New </a></li>
               <li class="breadcrumb-item active">Edit / Modify</li>
             </ol>
       </div>
@@ -32,28 +32,28 @@
         <!-- general form elements -->
         <div class="card card-primary">
           <div class="card-header">
-            <h3 class="card-title">Edit / Modify Package</h3>
+            <h3 class="card-title">Edit / Modify Hardware Package</h3>
             <div class="card-tools">
               <ul class="pagination pagination-sm float-right">
                 <li class="page-item">
-                    <a class="page-link bg-primary" href="{{url('package/create')}}"> 
+                    <a class="page-link bg-primary" href="{{url('hardwarepackage/create')}}"> 
                         Create 
                         <i class="fas fa-plus"></i>
                     </a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link bg-primary" href="{{url('package/list')}}"> 
+                    <a class="page-link bg-primary" href="{{url('hardwarepackage/list')}}"> 
                         Data 
                         <i class="fas fa-table"></i>
                     </a>
                 </li>
                 <li class="page-item">
-                  <a class="page-link  bg-primary" target="_blank" href="{{url('package/export/pdf')}}">
+                  <a class="page-link  bg-primary" target="_blank" href="{{url('hardwarepackage/export/pdf')}}">
                     <i class="fas fa-file-pdf" data-toggle="tooltip" data-html="true"title="Pdf"></i>
                   </a>
                 </li>
                 <li class="page-item">
-                  <a class="page-link  bg-primary" target="_blank" href="{{url('package/export/excel')}}">
+                  <a class="page-link  bg-primary" target="_blank" href="{{url('hardwarepackage/export/excel')}}">
                     <i class="fas fa-file-excel" data-toggle="tooltip" data-html="true"title="Excel"></i>
                   </a>
                 </li>
@@ -62,13 +62,13 @@
         </div>
           <!-- /.card-header -->
           <!-- form start -->
-          <form action="{{url('package/update/'.$dataRow->id)}}" method="post" enctype="multipart/form-data">
+          <form action="{{url('hardwarepackage/update/'.$dataRow->id)}}" method="post" enctype="multipart/form-data">
           {{csrf_field()}}
           
             <div class="card-body">
                 
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                       <!-- text input -->
                       <div class="form-group">
                         <label for="title">Title</label>
@@ -86,7 +86,7 @@
                       </div>
                     </div>
 
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                       <!-- text input -->
                       <div class="form-group">
                         <label for="price">Price</label>
@@ -103,56 +103,29 @@
                         class="form-control" placeholder="Enter Price" id="price" name="price">
                       </div>
                     </div>
-
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                  <label>Choose Subscription Type</label>
-                                  <select class="form-control select2" style="width: 100%;"  id="subscription_type" name="subscription_type">
-                                    
-        <option value="">Please select</option>
-            <option 
-                    <?php 
-                    if($dataRow->subscription_type=="Monthly"){
-                        ?>
-                        selected="selected" 
-                        <?php 
-                    }
-                    ?> 
-            value="Monthly">Monthly</option>
-            <option 
-                    <?php 
-                    if($dataRow->subscription_type=="Yearly"){
-                        ?>
-                        selected="selected" 
-                        <?php 
-                    }
-                    ?> 
-            value="Yearly">Yearly</option>
-                                  </select>
-                                </div>
-                            </div>
-                        </div>
-                    
+                </div>
+                
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Choose Package Image</label>
-                                    <!-- <label for="customFile">Choose Package Image</label> -->
+                                    <label>Choose Hardware Image</label>
+                                    <!-- <label for="customFile">Choose Hardware Image</label> -->
                                     <div class="custom-file">
-                                      <input type="file" class="custom-file-input"  id="package_image" name="package_image">
-                                      <input type="hidden" value="{{$dataRow->package_image}}" name="ex_package_image" />
-                                      <label class="custom-file-label" for="customFile">Choose Package Image</label>
+                                      <input type="file" class="custom-file-input"  id="hardware_image" name="hardware_image">
+                                      <input type="hidden" value="{{$dataRow->hardware_image}}" name="ex_hardware_image" />
+                                      <label class="custom-file-label" for="customFile">Choose Hardware Image</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                @if(isset($dataRow->package_image))
-                                    @if(!empty($dataRow->package_image))
-                                        <img class="img-thumbnail" src="{{url('upload/package/'.$dataRow->package_image)}}" width="150">
+                                @if(isset($dataRow->hardware_image))
+                                    @if(!empty($dataRow->hardware_image))
+                                        <img class="img-thumbnail" src="{{url('upload/hardwarepackage/'.$dataRow->hardware_image)}}" width="150">
                                     @endif
                                 @endif
                             </div>
                         </div>
+
                 <div class="row">
                     <div class="col-sm-12">
                       <!-- text input -->
@@ -167,9 +140,9 @@
                               </tr>
                           </thead>
                           <tbody>
-                             @if(isset($dataRow->feature_detail))
+                             @if(isset($dataRow->hardware_detail))
                               <?php 
-                              $feature_details=json_decode($dataRow->feature_detail);
+                              $feature_details=json_decode($dataRow->hardware_detail);
                               //dd($feature_details);
                               $i=1;
                               ?>
@@ -240,7 +213,7 @@
                 <i class="fas fa-save"></i> 
                 Update
               </button>
-              <a class="btn btn-danger" href="{{url('package/edit/'.$dataRow->id)}}">
+              <a class="btn btn-danger" href="{{url('hardwarepackage/edit/'.$dataRow->id)}}">
                 <i class="far fa-times-circle"></i> 
                 Reset
               </a>

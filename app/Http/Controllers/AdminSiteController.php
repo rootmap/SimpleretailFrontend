@@ -26,6 +26,7 @@ use App\OtherFeature;
 use App\PageSetting;
 use App\Blogs;
 use App\BlogComment;
+use App\HardwarePackage;
 use Illuminate\Http\Request;
 use Session;
 
@@ -195,6 +196,12 @@ class AdminSiteController extends Controller
     public function pricing(){
       $allPackage = Package::where('module_status','Active')->get();
       return view('site.pages.pricing',compact('allPackage'));
+    }
+
+    public function hardware(){
+      $country=\DB::table('apps_countries')->get();
+      $allPackage = HardwarePackage::where('module_status','Active')->get();
+      return view('site.pages.hardware',compact('allPackage', 'country'));
     }
 
     public function pricingSet($packageid=0){

@@ -26,6 +26,7 @@ Route::get('/blog', 'AdminSiteController@blog');
 Route::get('/blog/{detail}', 'AdminSiteController@blogDetail');
 Route::post('/save/blog/comment', 'AdminSiteController@saveComment');
 Route::get('/pricing', 'AdminSiteController@pricing');
+Route::get('/hardware', 'AdminSiteController@hardware');
 Route::get('/purchase/package/{packageid}', 'AdminSiteController@pricingSet');
 
 
@@ -404,3 +405,17 @@ Route::group(['middleware' => 'auth'], function () {
 	
 });
 
+
+//======================== Hardwarepackage Route Start ===============================//
+Route::get('/hardwarepackage/list','HardwarepackageController@show');
+Route::get('/hardwarepackage/create','HardwarepackageController@create');
+Route::get('/hardwarepackage/edit/{id}','HardwarepackageController@edit');
+Route::get('/hardwarepackage/delete/{id}','HardwarepackageController@destroy');
+Route::get('/hardwarepackage','HardwarepackageController@index');
+Route::get('/hardwarepackage/export/excel','HardwarepackageController@ExportExcel');
+Route::get('/hardwarepackage/export/pdf','HardwarepackageController@ExportPDF');
+Route::post('/hardwarepackage','HardwarepackageController@store');
+Route::post('/hardwarepackage/ajax','HardwarepackageController@ajaxSave');
+Route::post('/hardwarepackage/datatable/ajax','HardwarepackageController@datatable');
+Route::post('/hardwarepackage/update/{id}','HardwarepackageController@update');
+//======================== Hardwarepackage Route End ===============================//
