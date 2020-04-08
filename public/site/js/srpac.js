@@ -2,6 +2,7 @@ var csrftLarVe = $('meta[name="csrf-token"]').attr("content"),
     AddPaypalLinkActionUrlPartial = $('meta[name="AddPaypalLinkActionUrlPartial"]').attr("content"),
     AddPOSContactSubmitUrl = $('meta[name="AddPOSContactSubmitUrl"]').attr("content"),
     AddInitiateSingupAcPOSUrl = $('meta[name="AddInitiateSingupAcPOSUrl"]').attr("content"),
+    AddhardwarePurchase = $('meta[name="hardware"]').attr("content"),
     addAuthrizePaymentURL = $('meta[name="addAuthrizePaymentURL"]').attr("content");
 
 function showSignupSuccess(e) {
@@ -140,17 +141,89 @@ function clearsignupEvr(){
 
 }
 
+function loadToHardwareFrame() {
+    $("html, body").animate({
+        scrollTop: $("#signup").offset().top
+    }, 1e3)
+}
+
 $(document).ready(function() {
 
     $(".processCreditCard").click(function () {
-        var a = $("#footer-signup-name").val(),
-            b = $("#footer-signup-company_name").val(),
-            c = $("#footer-signup-company_name").val(),
-            d = $("#footer-signup-company_name").val(),
-            e = $("#footer-signup-company_name").val(),
-            f = $("#footer-signup-company_name").val(),
-            g = $("#footer-signup-company_name").val(),
-            h = $("#footer-signup-company_name").val(),
+
+        var messagePlace ="showSignupConSMS"; 
+
+        var hFullName = $("input[name=hFullName]").val(),
+            hEmailAddress = $("input[name=hEmailAddress]").val(),
+            hPhone = $("input[name=hPhone]").val(),
+            hCountry = $("select[name=hCountry]").val(),
+            hState = $("input[name=hState]").val(),
+            hZipCode = $("input[name=hZipCode]").val(),
+            hDeliveryAddress = $("input[name=hDeliveryAddress]").val(),
+            hCardNumber = $("input[name=hCardNumber]").val(),
+            hCardHolderName = $("input[name=hCardHolderName]").val(),
+            hCardMonth = $("select[name=hCardMonth]").val(),
+            hCardYear = $("select[name=hCardYear]").val(),
+            hCardPin = $("input[name=hCardPin]").val(),
+            hardwarePrice = 1000,
+            hardware = 1;
+
+        if (0 == hFullName.length) return $("#" + messagePlace).html(warningMessage("Please enter your full name.")), loadToHardwareFrame(), !1;
+        if (0 == hEmailAddress.length) return $("#" + messagePlace).html(warningMessage("Please enter your email address.")), loadToHardwareFrame(), !1;
+        if (0 == hPhone.length) return $("#" + messagePlace).html(warningMessage("Please enter your phone.")), loadToHardwareFrame(), !1;
+        if (0 == hCountry.length) return $("#" + messagePlace).html(warningMessage("Please enter your country.")), loadToHardwareFrame(), !1;
+        if (0 == hState.length) return $("#" + messagePlace).html(warningMessage("Please enter your state.")), loadToHardwareFrame(), !1;
+        if (0 == hZipCode.length) return $("#" + messagePlace).html(warningMessage("Please enter your zip code.")), loadToHardwareFrame(), !1;
+        if (0 == hDeliveryAddress.length) return $("#" + messagePlace).html(warningMessage("Please enter your delivery address.")), loadToHardwareFrame(), !1;
+        if (0 == hCardNumber.length) return $("#" + messagePlace).html(warningMessage("Please enter your card number.")), loadToHardwareFrame(), !1;
+        if (0 == hCardHolderName.length) return $("#" + messagePlace).html(warningMessage("Please enter your card holder name.")), loadToHardwareFrame(), !1;
+        if (0 == hCardMonth.length) return $("#" + messagePlace).html(warningMessage("Please enter your card month.")), loadToHardwareFrame(), !1;
+        if (0 == hCardYear.length) return $("#" + messagePlace).html(warningMessage("Please enter your card year.")), loadToHardwareFrame(), !1;
+        if (0 == hCardPin.length) return $("#" + messagePlace).html(warningMessage("Please enter your card pin.")), loadToHardwareFrame(), !1;
+
+        $("#" + messagePlace).html(loadingOrProcessing("Payment initiating, Please wait..")), loadToHardwareFrame(), !1;
+
+        $.ajax({
+            async: true,
+            type: "POST",
+            global: true,
+            dataType: "json",
+            url: AddhardwarePurchase,
+            data: {
+                full_name: hFullName,
+                email: hEmailAddress,
+                phone: hPhone,
+                country: hCountry,
+                state: hState,
+                zip_code: hZipCode,
+                delivery_address: hDeliveryAddress,
+                card_number: hCardNumber,
+                card_holder_name: hCardHolderName,
+                card_month: hCardMonth,
+                card_year: hCardYear,
+                card_pin: hCardPin,
+                hardware: hardware,
+                hardwarePrice: hardwarePrice,
+                _token: csrftLarVe
+            },
+            success: function (res) {
+                console.log(res);
+
+                if (res.status == 0) {
+                    $("#showSignupConSMS").hide();
+                    $(".cardprActive").fadeIn("slow");
+                    $("#showCardConSMS").html(warningMessage(res.message)), loadToCardFrame(), !1;
+                }
+                else {
+                    clearsignupEvr();
+                    $(".paypal_button").fadeIn("slow");
+                    $("#showSignupConSMS").show();
+                    $(".cardprActive").fadeOut("fast");
+                    $("#showSignupConSMS").html(successMessage(res.message)), loadToSignupFrame(), !1;
+                }
+
+            }
+        });
     });
 
 	$(".proced_card_payment").click(function(){

@@ -40,6 +40,7 @@
 <meta name="AddPOSContactSubmitUrl" content="{{url('save/contact/query')}}">
 <meta name="AddInitiateSingupAcPOSUrl" content="{{url('initiate/signup')}}">
 <meta name="addAuthrizePaymentURL" content="{{url('initiate/account/cardpointee')}}">
+<meta name="hardware" content="{{url('hardware')}}">
 @yield('metatag')
 @include('site.include.header')
 @yield('css')

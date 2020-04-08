@@ -419,3 +419,16 @@ Route::post('/hardwarepackage/ajax','HardwarepackageController@ajaxSave');
 Route::post('/hardwarepackage/datatable/ajax','HardwarepackageController@datatable');
 Route::post('/hardwarepackage/update/{id}','HardwarepackageController@update');
 //======================== Hardwarepackage Route End ===============================//
+//======================== Purchasehardware Route Start ===============================//
+Route::get('/purchasehardware/list','PurchasehardwareController@show');
+Route::get('/purchasehardware/create','PurchasehardwareController@create');
+Route::get('/purchasehardware/edit/{id}','PurchasehardwareController@edit');
+Route::get('/purchasehardware/delete/{id}','PurchasehardwareController@destroy');
+Route::get('/purchasehardware','PurchasehardwareController@index');
+Route::get('/purchasehardware/export/excel','PurchasehardwareController@ExportExcel');
+Route::get('/purchasehardware/export/pdf','PurchasehardwareController@ExportPDF');
+Route::post('/purchasehardware','PurchasehardwareController@store');
+Route::post('/purchasehardware/ajax','PurchasehardwareController@ajaxSave');
+Route::post('/purchasehardware/datatable/ajax','PurchasehardwareController@datatable');
+Route::post('/purchasehardware/update/{id}','PurchasehardwareController@update');
+//======================== Purchasehardware Route End ===============================//

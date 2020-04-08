@@ -98,7 +98,7 @@
                                 <div class="row" style="margin-top:0px;">
                                     <div class="col-md-12 mb-2">
                                         <div class="form-wrap">
-                                            <input class="form-input" placeholder="Enter Card Holder Name" type="text" name="hPhone" data-constraints="@Required">
+                                            <input class="form-input" placeholder="Enter Card Holder Name" type="text" name="hCardHolderName" data-constraints="@Required">
                                         </div>
                                     </div>
                                 </div>
