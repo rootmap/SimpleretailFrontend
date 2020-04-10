@@ -14,7 +14,7 @@
         <div class="container">
           <div class="row">
 
-            <div class="col-lg-12 col-md-12 mb-4">
+            <div id="purchaseArea" class="col-lg-12 col-md-12 mb-4" style="display: none;">
               <div class="card mb-5 mb-lg-0 " style="border: 1px #fff solid !important; background: none;">
                 <div class="card-body">
                   <h3 style="font-size:2rem; color:#fff !important;" class="card-price text-center">Complete Your Payment</h3>
@@ -28,8 +28,12 @@
                   
                       <div class="col-md-12">
                         <div class="row">
+                        <div class="col-md-12 mb-2" >
+                            <div class="col-md-12" id="showSignupConSMS"></div>
+                        </div>
                         <div class="col-lg-6">
                             <div class="col-md-12">
+                                
                                 <div class="row" style="margin-top:0px;">
                                     <div class="col-md-6 mb-2">
                                         <div class="form-wrap">
@@ -180,7 +184,7 @@
                     @endforeach
                   </ul>
                   @endif
-                <button class="btn btn-block btn-primary text-uppercase" type="button" data-push="{{$row->id}}">Signup</button>
+                <button class="btn btn-block btn-primary text-uppercase purchaseHardwareDFK" type="button" data-push="{{$row->id}}">Signup</button>
                 </div>
               </div>
             </div>

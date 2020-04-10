@@ -56,27 +56,23 @@
             <div class="card-body">
                 
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-sm-4">
                       <!-- text input -->
                       <div class="form-group">
                         <label for="full_name">Full Name</label>
                         <input type="text" class="form-control" placeholder="Enter Full Name" id="full_name" name="full_name">
                       </div>
                     </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col-sm-12">
+
+                    <div class="col-sm-4">
                       <!-- text input -->
                       <div class="form-group">
                         <label for="email">Email</label>
                         <input type="text" class="form-control" placeholder="Enter Email" id="email" name="email">
                       </div>
                     </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col-sm-12">
+
+                    <div class="col-sm-4">
                       <!-- text input -->
                       <div class="form-group">
                         <label for="phone">Phone</label>
@@ -85,38 +81,34 @@
                     </div>
                 </div>
                 
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                  <label>Choose Country</label>
-                                  <select class="form-control select2" style="width: 100%;"  id="country" name="country">
-                                        <option value="">Please Select</option>
-                                        @if(isset($dataRow_Category))    
-                                            @if(count($dataRow_Category)>0)
-                                                @foreach($dataRow_Category as $Category)
-                                                    <option value="{{$Category->id}}">{{$Category->name}}</option>
-                                                    
-                                                @endforeach
-                                            @endif
-                                        @endif 
-                                        
-                                  </select>
-                                </div>
-                            </div>
-                        </div>
-                    
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label>Choose Country</label>
+                          <select class="form-control select2" style="width: 100%;"  id="country" name="country">
+                                <option value="">Please Select</option>
+                                @if(isset($dataRow_Category))    
+                                    @if(count($dataRow_Category)>0)
+                                        @foreach($dataRow_Category as $Category)
+                                            <option value="{{$Category->country_name}}">{{$Category->country_name}}</option>
+                                            
+                                        @endforeach
+                                    @endif
+                                @endif 
+                                
+                          </select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
                       <!-- text input -->
                       <div class="form-group">
                         <label for="state">State</label>
                         <input type="text" class="form-control" placeholder="Enter State" id="state" name="state">
                       </div>
                     </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col-sm-12">
+
+                    <div class="col-sm-4">
                       <!-- text input -->
                       <div class="form-group">
                         <label for="zip_code">Zip Code</label>
@@ -136,17 +128,15 @@
                 </div>
                 
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-sm-6">
                       <!-- text input -->
                       <div class="form-group">
                         <label for="card_number">Card Number</label>
                         <input type="text" class="form-control" placeholder="Enter Card Number" id="card_number" name="card_number">
                       </div>
                     </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col-sm-12">
+
+                    <div class="col-sm-6">
                       <!-- text input -->
                       <div class="form-group">
                         <label for="card_holder_name">Card Holder Name</label>
@@ -155,40 +145,31 @@
                     </div>
                 </div>
                 
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                  <label>Choose Card Month</label>
-                                  <select class="form-control select2" style="width: 100%;"  id="card_month" name="card_month">
-                                    
-        <option value="">Please select</option>
-            <option 
-            value="01">01</option>
-            <option 
-            value="02">02</option>
-                                  </select>
-                                </div>
-                            </div>
-                        </div>
-                    
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                  <label>Choose Card Year</label>
-                                  <select class="form-control select2" style="width: 100%;"  id="card_year" name="card_year">
-                                    
-        <option value="">Please select</option>
-            <option 
-            value="01">01</option>
-            <option 
-            value="02">02</option>
-                                  </select>
-                                </div>
-                            </div>
-                        </div>
-                    
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label>Choose Card Month</label>
+                          <select class="form-control select2" style="width: 100%;"  id="card_month" name="card_month">
+                            <option value="">Please select</option>
+                            @for($i=1; $i<=12; $i++)
+                                <option value="{{strlen($i)==2?$i:'0'.$i}}">{{strlen($i)==2?$i:'0'.$i}}</option>
+                            @endfor
+                          </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label>Choose Card Year</label>
+                          <select class="form-control select2" style="width: 100%;"  id="card_year" name="card_year">                    
+                              @for($i=date('Y'); $i<=date('Y')+10; $i++)
+                                  <option value="{{$i}}">{{$i}}</option>
+                              @endfor
+                          </select>
+                        </div>
+                    </div>
+ 
+                    <div class="col-sm-4">
                       <!-- text input -->
                       <div class="form-group">
                         <label for="card_pin">Card Pin</label>
@@ -197,28 +178,26 @@
                     </div>
                 </div>
                 
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                  <label>Choose Hardware</label>
-                                  <select class="form-control select2" style="width: 100%;"  id="hardware" name="hardware">
-                                        <option value="">Please Select</option>
-                                        @if(isset($dataRow_HardwarePackage))    
-                                            @if(count($dataRow_HardwarePackage)>0)
-                                                @foreach($dataRow_HardwarePackage as $HardwarePackage)
-                                                    <option value="{{$HardwarePackage->id}}">{{$HardwarePackage->title}}</option>
-                                                    
-                                                @endforeach
-                                            @endif
-                                        @endif 
-                                        
-                                  </select>
-                                </div>
-                            </div>
-                        </div>
-                    
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                          <label>Choose Hardware</label>
+                          <select class="form-control select2" style="width: 100%;"  id="hardware" name="hardware">
+                                <option value="">Please Select</option>
+                                @if(isset($dataRow_HardwarePackage))    
+                                    @if(count($dataRow_HardwarePackage)>0)
+                                        @foreach($dataRow_HardwarePackage as $HardwarePackage)
+                                            <option value="{{$HardwarePackage->id}}">{{$HardwarePackage->title}}</option>
+                                            
+                                        @endforeach
+                                    @endif
+                                @endif 
+                                
+                          </select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
                       <!-- text input -->
                       <div class="form-group">
                         <label for="hardware_price">Hardware Price</label>
@@ -227,61 +206,59 @@
                     </div>
                 </div>
                 
-        <div class="row">
-            <div class="col-sm-12">
-              <!-- radio -->
-              <div class="form-group">
-              <label>Choose Payment Status</label>
-        
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" 
-                          id="payment_status_0" name="payment_status" value="Pending">
-                          <label class="form-check-label">Pending</label>
-                        </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                      <!-- radio -->
+                      <div class="form-group">
+                      <label>Choose Payment Status</label>
                 
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" 
-                          id="payment_status_1" name="payment_status" value="Partial">
-                          <label class="form-check-label">Partial</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" 
+                                  id="payment_status_0" name="payment_status" value="Pending">
+                                  <label class="form-check-label">Pending</label>
+                                </div>
+                        
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" 
+                                  id="payment_status_1" name="payment_status" value="Partial">
+                                  <label class="form-check-label">Partial</label>
+                                </div>
+                        
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" 
+                                  id="payment_status_2" name="payment_status" value="Paid">
+                                  <label class="form-check-label">Paid</label>
+                                </div>
+                        
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" 
+                                  id="payment_status_3" name="payment_status" value="Canceled">
+                                  <label class="form-check-label">Canceled</label>
+                                </div>
+                        
+                            </div>
                         </div>
-                
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" 
-                          id="payment_status_2" name="payment_status" value="Paid">
-                          <label class="form-check-label">Paid</label>
+
+                        <div class="col-sm-6">
+                          <!-- radio -->
+                          <div class="form-group">
+                          <label>Choose Hardware Delivery Status</label>
+                    
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" 
+                                      id="hardware_delivery_status_0" name="hardware_delivery_status" value="On Progress">
+                                      <label class="form-check-label">On Progress</label>
+                                    </div>
+                            
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" 
+                                      id="hardware_delivery_status_1" name="hardware_delivery_status" value="Delivered">
+                                      <label class="form-check-label">Delivered</label>
+                                    </div>
+                            
+                                </div>
+                            </div>
                         </div>
-                
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" 
-                          id="payment_status_3" name="payment_status" value="Canceled">
-                          <label class="form-check-label">Canceled</label>
-                        </div>
-                
-                    </div>
-                </div>
-            </div>
-            
-        <div class="row">
-            <div class="col-sm-12">
-              <!-- radio -->
-              <div class="form-group">
-              <label>Choose Hardware Delivery Status</label>
-        
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" 
-                          id="hardware_delivery_status_0" name="hardware_delivery_status" value="On Progress">
-                          <label class="form-check-label">On Progress</label>
-                        </div>
-                
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" 
-                          id="hardware_delivery_status_1" name="hardware_delivery_status" value="Delivered">
-                          <label class="form-check-label">Delivered</label>
-                        </div>
-                
-                    </div>
-                </div>
-            </div>
                    
             </div>
             <!-- /.card-body -->

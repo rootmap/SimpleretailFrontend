@@ -27,6 +27,7 @@ Route::get('/blog/{detail}', 'AdminSiteController@blogDetail');
 Route::post('/save/blog/comment', 'AdminSiteController@saveComment');
 Route::get('/pricing', 'AdminSiteController@pricing');
 Route::get('/hardware', 'AdminSiteController@hardware');
+Route::post('/hardware', 'AdminSiteController@hardwarePurchase');
 Route::get('/purchase/package/{packageid}', 'AdminSiteController@pricingSet');
 
 

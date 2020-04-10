@@ -149,6 +149,8 @@ function loadToHardwareFrame() {
 
 $(document).ready(function() {
 
+    //purchaseArea
+
     $(".processCreditCard").click(function () {
 
         var messagePlace ="showSignupConSMS"; 
@@ -203,13 +205,22 @@ $(document).ready(function() {
                 card_year: hCardYear,
                 card_pin: hCardPin,
                 hardware: hardware,
-                hardwarePrice: hardwarePrice,
+                hardware_price: hardwarePrice,
                 _token: csrftLarVe
             },
             success: function (res) {
-                console.log(res);
+                console.log('Success',res);
 
-                if (res.status == 0) {
+                if(res.status==1)
+                {
+                    $("#" + messagePlace).html(successMessage(res.message)), loadToSignupFrame(), !1;
+                }
+                else
+                {
+                    $("#" + messagePlace).html(warningMessage(res.message)), loadToCardFrame(), !1;
+                }
+
+                /* if (res.status == 0) {
                     $("#showSignupConSMS").hide();
                     $(".cardprActive").fadeIn("slow");
                     $("#showCardConSMS").html(warningMessage(res.message)), loadToCardFrame(), !1;
@@ -220,8 +231,13 @@ $(document).ready(function() {
                     $("#showSignupConSMS").show();
                     $(".cardprActive").fadeOut("fast");
                     $("#showSignupConSMS").html(successMessage(res.message)), loadToSignupFrame(), !1;
-                }
+                } */
 
+            },
+            error: function (reject) {
+                console.log('Error',reject.status);
+                $("#" + messagePlace).html(warningMessage('Something went wrong, Please try again later.')), loadToCardFrame(), !1;
+                window.location.href = window.location.href;
             }
         });
     });

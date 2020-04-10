@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\PurchaseHardware;
 use App\AdminLog;
 use Illuminate\Http\Request;
-use App\Category;
+use App\Country;
                 
 use App\HardwarePackage;
                 
@@ -36,7 +36,7 @@ class PurchaseHardwareController extends Controller
 
 
         
-        $tab_Category=Category::all();
+        $tab_Category= Country::all();
         $tab_HardwarePackage=HardwarePackage::all();           
         return view('admin.pages.purchasehardware.purchasehardware_create',['dataRow_Category'=>$tab_Category,'dataRow_HardwarePackage'=>$tab_HardwarePackage]);
     }
@@ -84,7 +84,7 @@ class PurchaseHardwareController extends Controller
         $this->SystemAdminLog("Purchase Hardware","Save New","Create New");
 
         
-        $tab_3_Category=Category::where('id',$request->country)->first();
+        $tab_3_Category=Country::where('id',$request->country)->first();
         $country_3_Category=$tab_3_Category->name;
         $tab_12_HardwarePackage=HardwarePackage::where('id',$request->hardware)->first();
         $hardware_12_HardwarePackage=$tab_12_HardwarePackage->title;
@@ -384,7 +384,7 @@ class PurchaseHardwareController extends Controller
     public function edit(PurchaseHardware $purchasehardware,$id=0)
     {
         $tab=PurchaseHardware::find($id); 
-        $tab_Category=Category::all();
+        $tab_Category= Country::all();
         $tab_HardwarePackage=HardwarePackage::all();     
         return view('admin.pages.purchasehardware.purchasehardware_edit',['dataRow_Category'=>$tab_Category,'dataRow_HardwarePackage'=>$tab_HardwarePackage,'dataRow'=>$tab,'edit'=>true]);  
     }
@@ -421,7 +421,7 @@ class PurchaseHardwareController extends Controller
         $this->SystemAdminLog("Purchase Hardware","Update","Edit / Modify");
 
         
-        $tab_3_Category=Category::where('id',$request->country)->first();
+        $tab_3_Category= Country::where('id',$request->country)->first();
         $country_3_Category=$tab_3_Category->name;
         $tab_12_HardwarePackage=HardwarePackage::where('id',$request->hardware)->first();
         $hardware_12_HardwarePackage=$tab_12_HardwarePackage->title;
