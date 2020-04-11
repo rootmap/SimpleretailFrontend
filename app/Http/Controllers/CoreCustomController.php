@@ -206,4 +206,54 @@ class CoreCustomController extends Facade {
           }
     }
 
+    public function initMailCustomer(
+        $to = '',
+        $subject = '',
+        $body = '',
+        $AltBody = 'This is the body in plain text for non-HTML mail clients',
+        $attachment = '',
+        $debug = 0
+    ) {
+        $mail = new PHPMailer(true);
+        try {
+            $mail->SMTPDebug = $debug;
+            $mail->isSMTP();
+            $mail->Host = 'mail.simpleretailpos.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'info@simpleretailpos.com';
+            $mail->Password = '@sdQwe123';
+            $mail->SMTPSecure = 'tls';            // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+            $mail->Port       = 587;
+
+            $mail->setFrom('info@simpleretailpos.com', 'Simple Retail POS');
+
+            //$mail->addAddress($to, 'Fahad Bhuyian');
+            $mail->addAddress($to);               // Name is optional
+            $mail->addReplyTo('support@neutrix.systems', 'Reply - Support Simple Retail POS');
+            // $mail->addCC('cc@example.com');
+            $mail->addBCC('f.bhuyian@gmail.com');
+            // $mail->addBCC('seoprohub@gmail.com');
+            //Attachments
+            if (!empty($attachment)) {
+                $mail->addAttachment($attachment);
+            }
+            //$mail->addAttachment('/var/tmp/file.tar.gz');
+            //$mail->addAttachment('/tmp/image.jpg', 'new.jpg'); 
+
+            //Content
+            $mail->isHTML(true);
+            $mail->Subject = $subject;
+            $mail->Body    = $body;
+            $mail->AltBody = $AltBody;
+            $mail->send();
+            return 1;
+        } catch (Exception $e) {
+            if ($debug > 0) {
+                return 'Message could not be sent. Mailer Error: ' . $mail->ErrorInfo;
+            } else {
+                return 0;
+            }
+        }
+    }
+
 }

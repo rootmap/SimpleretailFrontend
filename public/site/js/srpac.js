@@ -143,17 +143,38 @@ function clearsignupEvr(){
 
 function loadToHardwareFrame() {
     $("html, body").animate({
-        scrollTop: $("#signup").offset().top
+        scrollTop: $("#purchaseArea").offset().top - 100
     }, 1e3)
 }
 
 $(document).ready(function() {
 
     //purchaseArea
+    //purchaseplaceitem
+
+    $('.closePurchase').click(function(){
+        $('#purchaseArea').hide();
+    });
+
+    $('.purchaseHardwareDFK').click(function(){
+        var item = $(this).attr('data-pro-til');
+        var item_id = $(this).attr('data-push');
+        var item_price = $(this).attr('data-pro-price');
+
+        $(".purchaseplaceitem").children('span:eq(0)').html(item);
+        $(".purchaseplaceitem").children('span:eq(0)').attr('data-id', item_id);
+        $(".purchaseplaceitem").children('span:eq(3)').html(item_price);
+        $(".purchaseplaceitem").children('span:eq(3)').attr('data-id', item_price);
+
+        $('#purchaseArea').show();
+        loadToHardwareFrame();
+    });
 
     $(".processCreditCard").click(function () {
 
         var messagePlace ="showSignupConSMS"; 
+
+        
 
         var hFullName = $("input[name=hFullName]").val(),
             hEmailAddress = $("input[name=hEmailAddress]").val(),
@@ -167,8 +188,17 @@ $(document).ready(function() {
             hCardMonth = $("select[name=hCardMonth]").val(),
             hCardYear = $("select[name=hCardYear]").val(),
             hCardPin = $("input[name=hCardPin]").val(),
-            hardwarePrice = 1000,
-            hardware = 1;
+            hardwarePrice = $(".purchaseplaceitem").children('span:eq(3)').attr('data-id'),
+            hardware = $(".purchaseplaceitem").children('span:eq(0)').attr('data-id');
+
+        if (hardware==0)
+        {
+            window.location.href = window.location.href;
+        }
+
+        if (hardwarePrice == 0) {
+            window.location.href = window.location.href;
+        }
 
         if (0 == hFullName.length) return $("#" + messagePlace).html(warningMessage("Please enter your full name.")), loadToHardwareFrame(), !1;
         if (0 == hEmailAddress.length) return $("#" + messagePlace).html(warningMessage("Please enter your email address.")), loadToHardwareFrame(), !1;
@@ -214,6 +244,22 @@ $(document).ready(function() {
                 if(res.status==1)
                 {
                     $("#" + messagePlace).html(successMessage(res.message)), loadToSignupFrame(), !1;
+
+                    $("input[name=hFullName]").val("");
+                    $("input[name=hEmailAddress]").val("");
+                    $("input[name=hPhone]").val("");
+                    $("input[name=hState]").val("");
+                    $("input[name=hZipCode]").val("");
+                    $("input[name=hDeliveryAddress]").val("");
+                    $("input[name=hCardNumber]").val('');
+                    $("input[name=hCardHolderName]").val('');
+                    $("input[name=hCardPin]").val('');
+
+                    $(".purchaseplaceitem").children('span:eq(3)').attr('data-id','0'),
+                    $(".purchaseplaceitem").children('span:eq(0)').attr('data-id','0');
+
+                    $('#purchaseArea').hide();
+
                 }
                 else
                 {

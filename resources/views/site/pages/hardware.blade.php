@@ -18,12 +18,13 @@
               <div class="card mb-5 mb-lg-0 " style="border: 1px #fff solid !important; background: none;">
                 <div class="card-body">
                   <h3 style="font-size:2rem; color:#fff !important;" class="card-price text-center">Complete Your Payment</h3>
-                  <h5 class="card-title text-muted text-uppercase text-center" style=" color:#fff !important;">
-                      <span>Product Name</span>
+                  <h5 class="card-title text-muted text-uppercase text-center purchaseplaceitem" style=" color:#fff !important;">
+                      <span data-id="0">Product Name</span>
                       <span> | </span>
                       <span>$</span>
-                      <span>200</span>
+                      <span data-id="0">200</span>
                   </h5>
+                  <a href="javascript:void(0);" class="closePurchase" style="position: absolute; font-weight: bold; font-size:16px; color:#fff; top:2px; right:10px;">X</a>
                   <hr>
                   
                       <div class="col-md-12">
@@ -184,7 +185,7 @@
                     @endforeach
                   </ul>
                   @endif
-                <button class="btn btn-block btn-primary text-uppercase purchaseHardwareDFK" type="button" data-push="{{$row->id}}">Signup</button>
+                <button class="btn btn-block btn-primary text-uppercase purchaseHardwareDFK" data-pro-til="{{$row->title}}" data-pro-price="{{$row->price}}" type="button" data-push="{{$row->id}}">Purchase</button>
                 </div>
               </div>
             </div>
