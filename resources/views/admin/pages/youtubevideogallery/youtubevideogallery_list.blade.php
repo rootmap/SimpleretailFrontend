@@ -1,17 +1,17 @@
 
 @extends("admin.layout.master")
-@section("title","Videos")
+@section("title","Youtube Video Gallery")
 @section("content")
         <section class="content-header">
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1>Videos</h1>
+                <h1>Youtube Video Gallery</h1>
               </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a href="{{url('homevideos/create')}}">Create New </a></li>
-                  <li class="breadcrumb-item active">Videos Data</li>
+                  <li class="breadcrumb-item"><a href="{{url('youtubevideogallery/create')}}">Create New </a></li>
+                  <li class="breadcrumb-item active">Youtube Video Gallery Data</li>
                 </ol>
               </div>
             </div>
@@ -30,23 +30,23 @@
               <div class="card">
 
                 <div class="card-header">
-                  <h3 class="card-title">Videos Data</h3>
+                  <h3 class="card-title">Youtube Video Gallery Data</h3>
 
                     <div class="card-tools">
                       <ul class="pagination pagination-sm float-right">
                         <li class="page-item">
-                            <a class="page-link bg-primary" href="{{url('homevideos/create')}}"> 
+                            <a class="page-link bg-primary" href="{{url('youtubevideogallery/create')}}"> 
                                 Add New 
                                 <i class="fas fa-plus"></i> 
                             </a>
                         </li>
                         <li class="page-item">
-                          <a class="page-link" target="_blank" href="{{url('homevideos/export/pdf')}}">
+                          <a class="page-link" target="_blank" href="{{url('youtubevideogallery/export/pdf')}}">
                             <i class="fas fa-file-pdf" data-toggle="tooltip" data-html="true"title="Pdf"></i>
                           </a>
                         </li>
                         <li class="page-item">
-                          <a class="page-link" target="_blank" href="{{url('homevideos/export/excel')}}">
+                          <a class="page-link" target="_blank" href="{{url('youtubevideogallery/export/excel')}}">
                             <i class="fas fa-file-excel" data-toggle="tooltip" data-html="true"title="Excel"></i>
                           </a>
                         </li>
@@ -62,10 +62,7 @@
                     <thead>
                         <tr>
                             <th class="text-center">ID</th>
-                            <th class="text-center">Heading</th>
-                            <th class="text-center">Video Image</th>
-                            <th class="text-center">Video Link</th>
-                            <th class="text-center">Module Status</th>
+                            <th class="text-center">Youtube Link ID</th>
                             <th class="text-center">Created At</th>
                             <th class="text-center">Actions</th>
 
@@ -75,22 +72,15 @@
                         @if(count($dataRow))
                             @foreach($dataRow as $row)  
                                 <tr>
-                                    <td class="text-center">{{$row->id}}</td>
-                                    <td class="text-center">{{$row->heading}}</td>
-                                    <td class="text-center">
-                                      @if(!empty($row->video_image))
-                                      <img class="img-responsive" style="height:50px;" src="{{ url('upload/videos/'.$row->video_image) }}">
-                                      @endif
-                                    </td>
-                                    <td class="text-center">{{$row->video_link}}</td><td class="text-center">{{$row->module_status}}</td>
+                                    <td class="text-center">{{$row->id}}</td><td class="text-center">{{$row->youtube_link_id}}</td>
                                     <td>{{formatDate($row->created_at)}}</td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="{{url('homevideos/edit/'.$row->id)}}" type="button" class="btn btn-default">
+                                            <a href="{{url('youtubevideogallery/edit/'.$row->id)}}" type="button" class="btn btn-default">
                                                 Edit 
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <a href="{{url('homevideos/delete/'.$row->id)}}" type="button" class="btn btn-default">
+                                            <a href="{{url('youtubevideogallery/delete/'.$row->id)}}" type="button" class="btn btn-default">
                                                 Delete 
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
@@ -105,10 +95,7 @@
                     <tfoot>
                     <tr>
                         <th class="text-center">ID</th>
-                        <th class="text-center">Heading</th>
-                        <th class="text-center">Video Image</th>
-                        <th class="text-center">Video Link</th>
-                        <th class="text-center">Module Status</th>
+                        <th class="text-center">Youtube Link ID</th>
                         <th class="text-center">Created At</th>
                         <th class="text-center">Actions</th>
 

@@ -31,8 +31,8 @@
               <p>Dashboard</p>
             </a>
           </li>
-          <li class="nav-item has-treeview {{ in_array(Request::path(),array('slider','features','intragtedsolutions','videos','joinsimplicity'))?'menu-open':'' }}">
-            <a href="#" class="nav-link {{ in_array(Request::path(),array('slider','features','intragtedsolutions','videos','joinsimplicity'))?'active':'' }}">
+          <li class="nav-item has-treeview {{ in_array(Request::path(),array('slider','features','intragtedsolutions','homevideos','joinsimplicity'))?'menu-open':'' }}">
+            <a href="#" class="nav-link {{ in_array(Request::path(),array('slider','features','intragtedsolutions','homevideos','joinsimplicity'))?'active':'' }}">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Home Page
@@ -59,7 +59,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{url('videos')}}" class="nav-link {{ Request::path() == 'videos' ? 'active' : '' }}">
+                <a href="{{url('homevideos')}}" class="nav-link {{ Request::path() == 'homevideos' ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Video</p>
                 </a>
@@ -91,6 +91,41 @@
                 <a href="{{url('package')}}" class="nav-link {{ Request::path() == 'package' ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Package List</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview {{ in_array(Request::path(),array('package','package/create'))?'menu-open':'' }}">
+            <a href="#" class="nav-link {{ in_array(Request::path(),array('package','package/create'))?'active':'' }}">
+              <i class="nav-icon fas fa-book-open"></i>
+              <p>
+                Hardware
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{url('hardwarepackage/create')}}" class="nav-link {{ Request::path() == 'package/create' ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add New Hardware</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('hardwarepackage')}}" class="nav-link {{ Request::path() == 'package' ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Hardware List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('purchasehardware/create')}}" class="nav-link {{ Request::path() == 'package/create' ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Purchase New Hardware</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('purchasehardware')}}" class="nav-link {{ Request::path() == 'package' ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Purchase Hardware List</p>
                 </a>
               </li>
             </ul>

@@ -149,6 +149,30 @@ function loadToHardwareFrame() {
 
 $(document).ready(function() {
 
+    /* swal({
+        title: "Thank You.",
+        text: "Purchase is complete and sales team will contact with your email soon.",
+        type: "success",
+        timer: 3000
+    }); */
+
+    /* Swal.fire({
+        title: "Thank You.",
+        text: "Purchase is complete and sales team will contact with your email soon.",
+        type: "success",
+        timer: 3000
+        
+    }); */
+
+  /*   Swal.fire({
+        icon: 'success',
+        title: 'Thank You',
+        text: "dd",
+        timer: 3000
+    }); */
+
+
+    
     //purchaseArea
     //purchaseplaceitem
 
@@ -214,7 +238,7 @@ $(document).ready(function() {
         if (0 == hCardPin.length) return $("#" + messagePlace).html(warningMessage("Please enter your card pin.")), loadToHardwareFrame(), !1;
 
         $("#" + messagePlace).html(loadingOrProcessing("Payment initiating, Please wait..")), loadToHardwareFrame(), !1;
-
+        Swal.showLoading();
         $.ajax({
             async: true,
             type: "POST",
@@ -240,9 +264,13 @@ $(document).ready(function() {
             },
             success: function (res) {
                 console.log('Success',res);
-
+                Swal.hideLoading();
                 if(res.status==1)
                 {
+
+                    
+                   
+
                     $("#" + messagePlace).html(successMessage(res.message)), loadToSignupFrame(), !1;
 
                     $("input[name=hFullName]").val("");
@@ -257,6 +285,13 @@ $(document).ready(function() {
 
                     $(".purchaseplaceitem").children('span:eq(3)').attr('data-id','0'),
                     $(".purchaseplaceitem").children('span:eq(0)').attr('data-id','0');
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Thank You',
+                        text: res.message,
+                        timer:10000
+                    });
 
                     $('#purchaseArea').hide();
 

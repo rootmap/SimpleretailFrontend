@@ -26,6 +26,8 @@ Route::get('/blog', 'AdminSiteController@blog');
 Route::get('/blog/{detail}', 'AdminSiteController@blogDetail');
 Route::post('/save/blog/comment', 'AdminSiteController@saveComment');
 Route::get('/pricing', 'AdminSiteController@pricing');
+Route::get('/videos', 'AdminSiteController@videos');
+Route::get('/video', 'AdminSiteController@videos');
 Route::get('/hardware', 'AdminSiteController@hardware');
 Route::post('/hardware', 'AdminSiteController@hardwarePurchase');
 Route::get('/purchase/package/{packageid}', 'AdminSiteController@pricingSet');
@@ -128,17 +130,17 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/joinsimplicity/update/{id}','JoinsimplicityController@update');
 	//======================== Joinsimplicity Route End ===============================//
 	//======================== Videos Route Start ===============================//
-	Route::get('/videos/list','VideosController@show');
-	Route::get('/videos/create','VideosController@create');
-	Route::get('/videos/edit/{id}','VideosController@edit');
-	Route::get('/videos/delete/{id}','VideosController@destroy');
-	Route::get('/videos','VideosController@index');
-	Route::get('/videos/export/excel','VideosController@ExportExcel');
-	Route::get('/videos/export/pdf','VideosController@ExportPDF');
-	Route::post('/videos','VideosController@store');
-	Route::post('/videos/ajax','VideosController@ajaxSave');
-	Route::post('/videos/datatable/ajax','VideosController@datatable');
-	Route::post('/videos/update/{id}','VideosController@update');
+	Route::get('/homevideos/list','VideosController@show');
+	Route::get('/homevideos/create','VideosController@create');
+	Route::get('/homevideos/edit/{id}','VideosController@edit');
+	Route::get('/homevideos/delete/{id}','VideosController@destroy');
+	Route::get('/homevideos','VideosController@index');
+	Route::get('/homevideos/export/excel','VideosController@ExportExcel');
+	Route::get('/homevideos/export/pdf','VideosController@ExportPDF');
+	Route::post('/homevideos','VideosController@store');
+	Route::post('/homevideos/ajax','VideosController@ajaxSave');
+	Route::post('/homevideos/datatable/ajax','VideosController@datatable');
+	Route::post('/homevideos/update/{id}','VideosController@update');
 	//======================== Videos Route End ===============================//
 	//======================== Package Route Start ===============================//
 	Route::get('/package/list','PackageController@show');
@@ -403,33 +405,48 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/signuppackage/datatable/ajax','SignuppackageController@datatable');
 	Route::post('/signuppackage/update/{id}','SignuppackageController@update');
 	//======================== Signuppackage Route End ===============================//
+
+
+	//======================== Hardwarepackage Route Start ===============================//
+	Route::get('/hardwarepackage/list', 'HardwarepackageController@show');
+	Route::get('/hardwarepackage/create', 'HardwarepackageController@create');
+	Route::get('/hardwarepackage/edit/{id}', 'HardwarepackageController@edit');
+	Route::get('/hardwarepackage/delete/{id}', 'HardwarepackageController@destroy');
+	Route::get('/hardwarepackage', 'HardwarepackageController@index');
+	Route::get('/hardwarepackage/export/excel', 'HardwarepackageController@ExportExcel');
+	Route::get('/hardwarepackage/export/pdf', 'HardwarepackageController@ExportPDF');
+	Route::post('/hardwarepackage', 'HardwarepackageController@store');
+	Route::post('/hardwarepackage/ajax', 'HardwarepackageController@ajaxSave');
+	Route::post('/hardwarepackage/datatable/ajax', 'HardwarepackageController@datatable');
+	Route::post('/hardwarepackage/update/{id}', 'HardwarepackageController@update');
+	//======================== Hardwarepackage Route End ===============================//
+	//======================== Purchasehardware Route Start ===============================//
+	Route::get('/purchasehardware/list', 'PurchasehardwareController@show');
+	Route::get('/purchasehardware/create', 'PurchasehardwareController@create');
+	Route::get('/purchasehardware/edit/{id}', 'PurchasehardwareController@edit');
+	Route::get('/purchasehardware/delete/{id}', 'PurchasehardwareController@destroy');
+	Route::get('/purchasehardware', 'PurchasehardwareController@index');
+	Route::get('/purchasehardware/export/excel', 'PurchasehardwareController@ExportExcel');
+	Route::get('/purchasehardware/export/pdf', 'PurchasehardwareController@ExportPDF');
+	Route::post('/purchasehardware', 'PurchasehardwareController@store');
+	Route::post('/purchasehardware/ajax', 'PurchasehardwareController@ajaxSave');
+	Route::post('/purchasehardware/datatable/ajax', 'PurchasehardwareController@datatable');
+	Route::post('/purchasehardware/update/{id}', 'PurchasehardwareController@update');
+//======================== Purchasehardware Route End ===============================//
 	
 });
 
 
-//======================== Hardwarepackage Route Start ===============================//
-Route::get('/hardwarepackage/list','HardwarepackageController@show');
-Route::get('/hardwarepackage/create','HardwarepackageController@create');
-Route::get('/hardwarepackage/edit/{id}','HardwarepackageController@edit');
-Route::get('/hardwarepackage/delete/{id}','HardwarepackageController@destroy');
-Route::get('/hardwarepackage','HardwarepackageController@index');
-Route::get('/hardwarepackage/export/excel','HardwarepackageController@ExportExcel');
-Route::get('/hardwarepackage/export/pdf','HardwarepackageController@ExportPDF');
-Route::post('/hardwarepackage','HardwarepackageController@store');
-Route::post('/hardwarepackage/ajax','HardwarepackageController@ajaxSave');
-Route::post('/hardwarepackage/datatable/ajax','HardwarepackageController@datatable');
-Route::post('/hardwarepackage/update/{id}','HardwarepackageController@update');
-//======================== Hardwarepackage Route End ===============================//
-//======================== Purchasehardware Route Start ===============================//
-Route::get('/purchasehardware/list','PurchasehardwareController@show');
-Route::get('/purchasehardware/create','PurchasehardwareController@create');
-Route::get('/purchasehardware/edit/{id}','PurchasehardwareController@edit');
-Route::get('/purchasehardware/delete/{id}','PurchasehardwareController@destroy');
-Route::get('/purchasehardware','PurchasehardwareController@index');
-Route::get('/purchasehardware/export/excel','PurchasehardwareController@ExportExcel');
-Route::get('/purchasehardware/export/pdf','PurchasehardwareController@ExportPDF');
-Route::post('/purchasehardware','PurchasehardwareController@store');
-Route::post('/purchasehardware/ajax','PurchasehardwareController@ajaxSave');
-Route::post('/purchasehardware/datatable/ajax','PurchasehardwareController@datatable');
-Route::post('/purchasehardware/update/{id}','PurchasehardwareController@update');
-//======================== Purchasehardware Route End ===============================//
+//======================== Youtubevideogallery Route Start ===============================//
+Route::get('/youtubevideogallery/list','YoutubevideogalleryController@show');
+Route::get('/youtubevideogallery/create','YoutubevideogalleryController@create');
+Route::get('/youtubevideogallery/edit/{id}','YoutubevideogalleryController@edit');
+Route::get('/youtubevideogallery/delete/{id}','YoutubevideogalleryController@destroy');
+Route::get('/youtubevideogallery','YoutubevideogalleryController@index');
+Route::get('/youtubevideogallery/export/excel','YoutubevideogalleryController@ExportExcel');
+Route::get('/youtubevideogallery/export/pdf','YoutubevideogalleryController@ExportPDF');
+Route::post('/youtubevideogallery','YoutubevideogalleryController@store');
+Route::post('/youtubevideogallery/ajax','YoutubevideogalleryController@ajaxSave');
+Route::post('/youtubevideogallery/datatable/ajax','YoutubevideogalleryController@datatable');
+Route::post('/youtubevideogallery/update/{id}','YoutubevideogalleryController@update');
+//======================== Youtubevideogallery Route End ===============================//

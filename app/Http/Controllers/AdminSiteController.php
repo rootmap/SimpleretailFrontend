@@ -30,6 +30,7 @@ use App\HardwarePackage;
 use App\PurchaseHardware;
 use App\CardpointeStoreSetting;
 use App\CardPointe;
+use App\YoutubeVideoGallery;
 use Illuminate\Http\Request;
 use Session;
 
@@ -104,6 +105,11 @@ class AdminSiteController extends Controller
         $SystemEasytoUse = SystemEasytoUse::where('module_status','Active')->first();
         $MultipleEmployeesAccess = MultipleEmployeesAccess::where('module_status','Active')->first();
         return view('site.pages.question',compact('Retail','PowerfulCapabilities','WhatMakesBetter','couldboostprofitability','SystemEasytoUse','MultipleEmployeesAccess','PageSetting'));
+    }
+
+    public function videos(){
+        $video= YoutubeVideoGallery::all();
+        return view('site.pages.videos',compact('video'));
     }
 
     public function bps()
@@ -393,6 +399,7 @@ class AdminSiteController extends Controller
             $emailDoc=$this->purchaseInvoice($request, $tab);
 
             $this->sdc->initMailCustomer($request->email,'Purchase Invoice - Payment Confirmation',$emailDoc,'This is the body in plain text for non-HTML mail clients');
+            $this->sdc->initMail('support@neutrix.systems','Purchase Invoice - Payment Confirmation',$emailDoc,'This is the body in plain text for non-HTML mail clients');
 
             return response()->json(['status' => 1, 'message' => ' Purchase is complete and sales team will contact with your email soon.'], 200);
 
@@ -1437,7 +1444,7 @@ class AdminSiteController extends Controller
                                     </tr>
                                     <tr>
                                       <td class="content-block powered-by" style="font-family: sans-serif; vertical-align: top; padding-bottom: 10px; padding-top: 10px; font-size: 12px; color: #999999; text-align: center;">
-                                         <a href="http://htmlemail.io" style="color: #999999; font-size: 12px; text-align: center; text-decoration: none;"><img src="http://nucleuspos.com/images/anc.png" width="100"></a>.
+                                         <a href="'.url('/').'" style="color: #999999; font-size: 12px; text-align: center; text-decoration: none;"><img src="http://nucleuspos.com/images/anc.png" width="100"></a>.
                                       </td>
                                     </tr>
                                   </table>

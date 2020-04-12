@@ -10,7 +10,7 @@
       </div>
       <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{url('videos/list')}}">Videos Data</a></li>
+              <li class="breadcrumb-item"><a href="{{url('homevideos/list')}}">Videos Data</a></li>
               <li class="breadcrumb-item active">Create New Videos</li>
             </ol>
       </div>
@@ -34,14 +34,14 @@
             <h3 class="card-title">Create New Videos</h3>
             <div class="card-tools">
               <ul class="pagination pagination-sm float-right">
-                <li class="page-item"><a class="page-link bg-primary" href="{{url('videos/list')}}"> Data <i class="fas fa-table"></i></a></li>
+                <li class="page-item"><a class="page-link bg-primary" href="{{url('homevideos/list')}}"> Data <i class="fas fa-table"></i></a></li>
                 <li class="page-item">
-                  <a class="page-link  bg-primary" target="_blank" href="{{url('videos/export/pdf')}}">
+                  <a class="page-link  bg-primary" target="_blank" href="{{url('homevideos/export/pdf')}}">
                     <i class="fas fa-file-pdf" data-toggle="tooltip" data-html="true"title="Pdf"></i>
                   </a>
                 </li>
                 <li class="page-item">
-                  <a class="page-link  bg-primary" target="_blank" href="{{url('videos/export/excel')}}">
+                  <a class="page-link  bg-primary" target="_blank" href="{{url('homevideos/export/excel')}}">
                     <i class="fas fa-file-excel" data-toggle="tooltip" data-html="true"title="Excel"></i>
                   </a>
                 </li>
@@ -50,7 +50,7 @@
         </div>
           <!-- /.card-header -->
           <!-- form start -->
-          <form action="{{url('videos')}}" method="post" enctype="multipart/form-data">
+          <form action="{{url('homevideos')}}" method="post" enctype="multipart/form-data">
           {{csrf_field()}}
           
             <div class="card-body">
@@ -115,7 +115,7 @@
 
             <div class="card-footer">
               <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Submit</button>
-              <a class="btn btn-danger" href="{{url('videos/create')}}"><i class="far fa-times-circle"></i> Reset</a>
+              <a class="btn btn-danger" href="{{url('homevideos/create')}}"><i class="far fa-times-circle"></i> Reset</a>
             </div>
           </form>
         </div>

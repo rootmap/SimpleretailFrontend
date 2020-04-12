@@ -10,8 +10,8 @@
       </div>
       <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{url('videos/list')}}">Datatable </a></li>
-              <li class="breadcrumb-item"><a href="{{url('videos/create')}}">Create New </a></li>
+              <li class="breadcrumb-item"><a href="{{url('homevideos/list')}}">Datatable </a></li>
+              <li class="breadcrumb-item"><a href="{{url('homevideos/create')}}">Create New </a></li>
               <li class="breadcrumb-item active">Edit / Modify</li>
             </ol>
       </div>
@@ -36,24 +36,24 @@
             <div class="card-tools">
               <ul class="pagination pagination-sm float-right">
                 <li class="page-item">
-                    <a class="page-link bg-primary" href="{{url('videos/create')}}"> 
+                    <a class="page-link bg-primary" href="{{url('homevideos/create')}}"> 
                         Create 
                         <i class="fas fa-plus"></i>
                     </a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link bg-primary" href="{{url('videos/list')}}"> 
+                    <a class="page-link bg-primary" href="{{url('homevideos/list')}}"> 
                         Data 
                         <i class="fas fa-table"></i>
                     </a>
                 </li>
                 <li class="page-item">
-                  <a class="page-link  bg-primary" target="_blank" href="{{url('videos/export/pdf')}}">
+                  <a class="page-link  bg-primary" target="_blank" href="{{url('homevideos/export/pdf')}}">
                     <i class="fas fa-file-pdf" data-toggle="tooltip" data-html="true"title="Pdf"></i>
                   </a>
                 </li>
                 <li class="page-item">
-                  <a class="page-link  bg-primary" target="_blank" href="{{url('videos/export/excel')}}">
+                  <a class="page-link  bg-primary" target="_blank" href="{{url('homevideos/export/excel')}}">
                     <i class="fas fa-file-excel" data-toggle="tooltip" data-html="true"title="Excel"></i>
                   </a>
                 </li>
@@ -62,7 +62,7 @@
         </div>
           <!-- /.card-header -->
           <!-- form start -->
-          <form action="{{url('videos/update/'.$dataRow->id)}}" method="post" enctype="multipart/form-data">
+          <form action="{{url('homevideos/update/'.$dataRow->id)}}" method="post" enctype="multipart/form-data">
           {{csrf_field()}}
           
             <div class="card-body">
@@ -171,7 +171,7 @@
                 <i class="fas fa-save"></i> 
                 Update
               </button>
-              <a class="btn btn-danger" href="{{url('videos/edit/'.$dataRow->id)}}">
+              <a class="btn btn-danger" href="{{url('homevideos/edit/'.$dataRow->id)}}">
                 <i class="far fa-times-circle"></i> 
                 Reset
               </a>
